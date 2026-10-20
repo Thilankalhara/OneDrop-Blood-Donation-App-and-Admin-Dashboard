@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>OneDrop Admin Panel - QR Management</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/admin_shared.css">
+</head>
+<body>
+<div class="sidebar">
+    <div class="sidebar-logo">
+        <div class="logo-text"><span>One</span><span class="drop-letter"></span><span>Drop</span></div>
+    </div>
+    <a href="admin_panel.html"        class="nav-item"><i class="fas fa-th-large"></i>    <span>Overview</span></a>
+    <a href="user_management.html"    class="nav-item"><i class="fas fa-users"></i>       <span>User Management</span></a>
+    <a href="top_donaters.html"       class="nav-item"><i class="fas fa-trophy"></i>      <span>Top Donaters</span></a>
+    <a href="qr_manage.html"          class="nav-item"><i class="fas fa-qrcode"></i>      <span>QR Code Management</span></a>
+    <a href="qr_history.html"         class="nav-item"><i class="fas fa-history"></i>     <span>QR Scan History</span></a>
+    <a href="hospitals.html"          class="nav-item"><i class="fas fa-hospital"></i>    <span>Donation Centers</span></a>
+    <a href="monetary_donations.html" class="nav-item"><i class="fas fa-dollar-sign"></i> <span>Monetary Donations</span></a>
+    <a href="alerts.html"             class="nav-item"><i class="fas fa-bell"></i>        <span>Send Alerts</span></a>
+    <a href="LogoutServlet" class="nav-item" onclick="return confirmLogout(event)">
+        <i class="fas fa-sign-out-alt"></i><span>Logout</span>
+    </a>
+</div>
+<div class="main-content">
+    <div class="top-bar">
+        <h2><i class="fas fa-qrcode me-2" style="color:var(--primary-red);"></i>QR Code Management</h2>
+        <div class="admin-info">
+            <div>
+                <div class="admin-name" style="font-weight:600;color:#333;font-size:15px;">Loading...</div>
+                <div class="admin-email" style="font-size:13px;color:#999;">Loading...</div>
+            </div>
+            <div class="admin-avatar">?</div>
+        </div>
+    </div>
+    <div class="content-card">
+        <div id="alertBox" class="alert-msg" style="display:flex;align-items:center;gap:12px;"></div>
+        <div style="margin-bottom:25px;">
+            <button class="btn-action btn-generate"   onclick="generateQR()"> <i class="fas fa-plus"></i> Generate New QR</button>
+            <button class="btn-action btn-publish"    onclick="publishQR()">  <i class="fas fa-check-circle"></i> Publish QR</button>
+            <button class="btn-action btn-deactivate" onclick="deactivateQR()"><i class="fas fa-ban"></i> Deactivate</button>
+            <button class="btn-action btn-delete"     onclick="deleteQR()">   <i class="fas fa-trash"></i> Delete</button>
+        </div>
+        <div style="overflow-x:auto;">
+            <table class="custom-table">
+                <thead>
+                    <tr>
+                        <th style="width:50px;"><input type="checkbox" id="selectAll" onclick="toggleSelectAll(this)"></th>
+                        <th>ID</th><th>QR Code</th><th>Status</th><th>Generated Date</th><th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="qrTableBody">
+                    <tr><td colspan="6" style="text-align:center;padding:40px;">
+                        <i class="fas fa-spinner fa-spin" style="font-size:32px;color:var(--primary-red);"></i>
+                        <p style="margin-top:10px;color:#999;">Loading QR codes...</p>
+                    </td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div id="qrModal" class="modal">
+    <div class="modal-content" style="max-width:380px;text-align:center;padding:30px;">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h4 style="margin-bottom:10px;color:#333;font-size:22px;font-weight:600;">QR Code Preview</h4>
+        <img id="modalQRImage" alt="QR Code">
+        <button class="btn-action btn-download" onclick="downloadModalQR()"><i class="fas fa-download"></i> Download</button>
+    </div>
+</div>
+<script src="assets/js/admin_shared.js"></script>
+<script src="assets/js/qr_manage.js"></script>
+</body>
+</html>

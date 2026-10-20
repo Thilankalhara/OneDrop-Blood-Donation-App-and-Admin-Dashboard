@@ -1,0 +1,35 @@
+package model;
+
+public class Util {
+
+    public static String genarateCode() {
+        int r = (int) (Math.random() * 1000000);
+        return String.format("%06d", r);
+    }
+
+    public static boolean isEmailValid(String email) {
+        return email.matches("^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$");
+    }
+
+    public static boolean isPasswordValid(String password) {
+        return password.matches("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,}$");
+    }
+
+
+
+    public static boolean isMobileValid(String mobile) {
+        return mobile.matches("^\\d{10}$");
+    }
+
+    public static boolean isCodeValid(String code) {
+        return code.matches("^\\d{4,5}$");
+    }
+
+    public static boolean isInteger(String value){
+        return value.matches("^\\d+$");
+    }
+
+    public static boolean isDouble(String value){
+        return value.matches("^\\d+(\\.\\d{2})?$");
+    }
+}

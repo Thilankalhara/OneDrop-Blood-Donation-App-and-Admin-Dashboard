@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>OneDrop - User Management</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/admin_shared.css">
+</head>
+<body>
+<div class="sidebar">
+    <div class="sidebar-logo">
+        <div class="logo-text"><span>One</span><span class="drop-letter"></span><span>Drop</span></div>
+    </div>
+    <a href="admin_panel.html"        class="nav-item"><i class="fas fa-th-large"></i>    <span>Overview</span></a>
+    <a href="user_management.html"    class="nav-item"><i class="fas fa-users"></i>       <span>User Management</span></a>
+    <a href="top_donaters.html"       class="nav-item"><i class="fas fa-trophy"></i>      <span>Top Donaters</span></a>
+    <a href="qr_manage.html"          class="nav-item"><i class="fas fa-qrcode"></i>      <span>QR Code Management</span></a>
+    <a href="qr_history.html"         class="nav-item"><i class="fas fa-history"></i>     <span>QR Scan History</span></a>
+    <a href="hospitals.html"          class="nav-item"><i class="fas fa-hospital"></i>    <span>Donation Centers</span></a>
+    <a href="monetary_donations.html" class="nav-item"><i class="fas fa-dollar-sign"></i> <span>Monetary Donations</span></a>
+    <a href="alerts.html"             class="nav-item"><i class="fas fa-bell"></i>        <span>Send Alerts</span></a>
+    <a href="LogoutServlet" class="nav-item" onclick="return confirmLogout(event)">
+        <i class="fas fa-sign-out-alt"></i><span>Logout</span>
+    </a>
+</div>
+<div class="main-content">
+    <div class="top-bar">
+        <h2><i class="fas fa-users me-2" style="color:var(--primary-red);"></i>User Management</h2>
+        <div class="admin-info">
+            <div>
+                <div class="admin-name" style="font-weight:600;color:#333;font-size:15px;">Loading...</div>
+                <div class="admin-email" style="font-size:13px;color:#999;">Loading...</div>
+            </div>
+            <div class="admin-avatar">?</div>
+        </div>
+    </div>
+    <div class="content-card">
+        <h3><i class="fas fa-users-cog me-2" style="color:var(--primary-red);"></i>All Users</h3>
+        <div id="alertBox" class="alert-box"></div>
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" class="form-control" placeholder="Search user by email or name...">
+        </div>
+        <div class="filter-section">
+            <select id="statusFilter" class="form-select" style="max-width:200px;">
+                <option value="">All Status</option>
+                <option value="ACTIVE">Active</option>
+                <option value="INACTIVE">Inactive</option>
+            </select>
+            <select id="bloodTypeFilter" class="form-select" style="max-width:200px;">
+                <option value="">All Blood Types</option>
+                <option value="A+">A+</option><option value="A-">A-</option>
+                <option value="B+">B+</option><option value="B-">B-</option>
+                <option value="O+">O+</option><option value="O-">O-</option>
+                <option value="AB+">AB+</option><option value="AB-">AB-</option>
+            </select>
+            <select id="genderFilter" class="form-select" style="max-width:200px;">
+                <option value="">All Genders</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+        <div class="table-container">
+            <table class="custom-table">
+                <thead>
+                    <tr>
+                        <th>ID</th><th>Name</th><th>Email</th><th>Mobile</th>
+                        <th>Blood Type</th><th>Gender</th><th>Status</th><th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="userTableBody">
+                    <tr><td colspan="8" style="text-align:center;padding:40px;">
+                        <i class="fas fa-spinner fa-spin" style="font-size:32px;color:var(--primary-red);"></i>
+                        <p style="margin-top:10px;color:#999;">Loading users...</p>
+                    </td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="pagination" id="pagination"></div>
+    </div>
+</div>
+
+<!-- View User Modal -->
+<div id="viewUserModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4><i class="fas fa-user-circle me-2" style="color:var(--primary-red);"></i>User Details</h4>
+            <span class="close" onclick="document.getElementById('viewUserModal').style.display='none'">&times;</span>
+        </div>
+        <div class="modal-body">
+            <img id="modalUserImage" src="https://via.placeholder.com/120" class="user-profile-img" alt="User Profile">
+            <div class="user-detail-row"><div class="user-detail-label">User ID:</div><div class="user-detail-value" id="modalUserId"></div></div>
+            <div class="user-detail-row"><div class="user-detail-label">Name:</div><div class="user-detail-value" id="modalUserName"></div></div>
+            <div class="user-detail-row"><div class="user-detail-label">Email:</div><div class="user-detail-value" id="modalUserEmail"></div></div>
+            <div class="user-detail-row"><div class="user-detail-label">Mobile:</div><div class="user-detail-value" id="modalUserMobile"></div></div>
+            <div class="user-detail-row"><div class="user-detail-label">Blood Type:</div><div class="user-detail-value" id="modalUserBloodType"></div></div>
+            <div class="user-detail-row"><div class="user-detail-label">Gender:</div><div class="user-detail-value" id="modalUserGender"></div></div>
+            <div class="user-detail-row"><div class="user-detail-label">Status:</div><div class="user-detail-value" id="modalUserStatus"></div></div>
+            <div class="user-detail-row"><div class="user-detail-label">Registered:</div><div class="user-detail-value" id="modalUserCreated"></div></div>
+            <div class="user-detail-row"><div class="user-detail-label">Total Donations:</div><div class="user-detail-value" id="modalUserDonations">0</div></div>
+        </div>
+    </div>
+</div>
+
+<script src="assets/js/admin_shared.js"></script>
+<script src="assets/js/user_management.js"></script>
+</body>
+</html>

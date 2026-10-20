@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/swipeRefreshLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#E53935">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Red header -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="100dp"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:background="#E53935">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Leaderboard"
+                        android:textSize="22sp"
+                        android:textColor="#FFFFFF"
+                        android:fontFamily="@font/poppins_bold"
+                        android:gravity="center"
+                        android:layout_marginBottom="8dp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:background="@drawable/badge_red_dark"
+                        android:paddingStart="14dp"
+                        android:paddingEnd="14dp"
+                        android:paddingTop="6dp"
+                        android:paddingBottom="6dp"
+                        android:layout_marginBottom="24dp">
+
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🩸" android:textSize="13sp" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="  1 Donation = 100 Points" android:textSize="12sp" android:textColor="#FFFFFF" android:fontFamily="@font/poppins_semibold" />
+
+                    </LinearLayout>
+
+                    <!-- Podium -->
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="bottom" android:paddingBottom="8dp">
+
+                        <!-- 2nd -->
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                            <FrameLayout android:layout_width="64dp" android:layout_height="64dp" android:layout_gravity="center">
+                                <TextView android:id="@+id/rank2Avatar" android:layout_width="64dp" android:layout_height="64dp" android:text="—" android:textSize="18sp" android:textColor="#FFFFFF" android:fontFamily="@font/poppins_bold" android:gravity="center" android:background="@drawable/avatar_blue" />
+                                <TextView android:layout_width="20dp" android:layout_height="20dp" android:text="2" android:textSize="10sp" android:textColor="#FFFFFF" android:fontFamily="@font/poppins_bold" android:gravity="center" android:background="@drawable/rank_badge_blue" android:layout_gravity="bottom|end" />
+                            </FrameLayout>
+                            <TextView android:id="@+id/rank2Name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="—" android:textSize="12sp" android:textColor="#FFFFFF" android:fontFamily="@font/poppins_semibold" android:gravity="center" android:layout_marginTop="6dp" />
+                            <TextView android:id="@+id/rank2Score" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="— pts" android:textSize="11sp" android:textColor="#FFCCCC" android:fontFamily="@font/poppins_semibold" android:gravity="center" />
+                            <TextView android:id="@+id/rank2Donations" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="— 🩸" android:textSize="10sp" android:textColor="#FF9999" android:fontFamily="@font/poppins_regular" android:gravity="center" />
+                            <View android:layout_width="match_parent" android:layout_height="60dp" android:background="@drawable/podium_block_2" android:layout_marginTop="8dp" />
+                        </LinearLayout>
+
+                        <!-- 1st -->
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="👑" android:textSize="20sp" android:gravity="center" android:layout_gravity="center" android:layout_marginBottom="2dp" />
+                            <FrameLayout android:layout_width="80dp" android:layout_height="80dp" android:layout_gravity="center">
+                                <TextView android:id="@+id/rank1Avatar" android:layout_width="80dp" android:layout_height="80dp" android:text="—" android:textSize="22sp" android:textColor="#FFFFFF" android:fontFamily="@font/poppins_bold" android:gravity="center" android:background="@drawable/avatar_gold" />
+                                <TextView android:layout_width="22dp" android:layout_height="22dp" android:text="1" android:textSize="11sp" android:textColor="#FFFFFF" android:fontFamily="@font/poppins_bold" android:gravity="center" android:background="@drawable/rank_badge_gold" android:layout_gravity="bottom|end" />
+                            </FrameLayout>
+                            <TextView android:id="@+id/rank1Name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="—" android:textSize="13sp" android:textColor="#FFFFFF" android:fontFamily="@font/poppins_bold" android:gravity="center" android:layout_marginTop="6dp" />
+                            <TextView android:id="@+id/rank1Score" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="— pts" android:textSize="12sp" android:textColor="#FFCCCC" android:fontFamily="@font/poppins_bold" android:gravity="center" />
+                            <TextView android:id="@+id/rank1Donations" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="— 🩸" android:textSize="10sp" android:textColor="#FF9999" android:fontFamily="@font/poppins_regular" android:gravity="center" />
+                            <View android:layout_width="match_parent" android:layout_height="80dp" android:background="@drawable/podium_block_1" android:layout_marginTop="8dp" />
+                        </LinearLayout>
+
+                        <!-- 3rd -->
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                            <FrameLayout android:layout_width="64dp" android:layout_height="64dp" android:layout_gravity="center">
+                                <TextView android:id="@+id/rank3Avatar" android:layout_width="64dp" android:layout_height="64dp" android:text="—" android:textSize="18sp" android:textColor="#FFFFFF" android:fontFamily="@font/poppins_bold" android:gravity="center" android:background="@drawable/avatar_orange" />
+                                <TextView android:layout_width="20dp" android:layout_height="20dp" android:text="3" android:textSize="10sp" android:textColor="#FFFFFF" android:fontFamily="@font/poppins_bold" android:gravity="center" android:background="@drawable/rank_badge_orange" android:layout_gravity="bottom|end" />
+                            </FrameLayout>
+                            <TextView android:id="@+id/rank3Name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="—" android:textSize="12sp" android:textColor="#FFFFFF" android:fontFamily="@font/poppins_semibold" android:gravity="center" android:layout_marginTop="6dp" />
+                            <TextView android:id="@+id/rank3Score" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="— pts" android:textSize="11sp" android:textColor="#FFCCCC" android:fontFamily="@font/poppins_semibold" android:gravity="center" />
+                            <TextView android:id="@+id/rank3Donations" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="— 🩸" android:textSize="10sp" android:textColor="#FF9999" android:fontFamily="@font/poppins_regular" android:gravity="center" />
+                            <View android:layout_width="match_parent" android:layout_height="45dp" android:background="@drawable/podium_block_3" android:layout_marginTop="8dp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- White bottom sheet -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/bottom_sheet_rounded" android:layout_marginTop="-24dp" android:paddingTop="24dp" android:paddingStart="16dp" android:paddingEnd="16dp" android:paddingBottom="100dp">
+
+                    <!-- My Rank Card -->
+                    <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="20dp" app:cardCornerRadius="16dp" app:cardElevation="0dp" app:cardBackgroundColor="#E53935">
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center" android:layout_marginEnd="16dp">
+                                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="YOUR RANK" android:textSize="9sp" android:textColor="#FFAAAA" android:fontFamily="@font/poppins_semibold" android:letterSpacing="0.1" />
+                                    <TextView android:id="@+id/myRankNumber" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="#—" android:textSize="28sp" android:textColor="#FFFFFF" android:fontFamily="@font/poppins_bold" />
+                                </LinearLayout>
+                                <TextView android:id="@+id/myAvatar" android:layout_width="48dp" android:layout_height="48dp" android:text="?" android:textSize="14sp" android:textColor="#E53935" android:fontFamily="@font/poppins_bold" android:gravity="center" android:background="@drawable/avatar_white" android:layout_marginEnd="12dp" />
+                                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                                    <TextView android:id="@+id/myName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Loading..." android:textSize="15sp" android:textColor="#FFFFFF" android:fontFamily="@font/poppins_bold" />
+                                    <TextView android:id="@+id/myRankHint" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:textSize="11sp" android:textColor="#FFCCCC" android:fontFamily="@font/poppins_regular" />
+                                </LinearLayout>
+                                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="end">
+                                    <TextView android:id="@+id/myScore" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="—" android:textSize="18sp" android:textColor="#FFFFFF" android:fontFamily="@font/poppins_bold" android:gravity="end" />
+                                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="pts" android:textSize="10sp" android:textColor="#FFCCCC" android:fontFamily="@font/poppins_semibold" android:gravity="end" />
+                                </LinearLayout>
+                            </LinearLayout>
+                            <!-- Breakdown -->
+                            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:background="@drawable/badge_red_dark" android:paddingStart="12dp" android:paddingEnd="12dp" android:paddingTop="8dp" android:paddingBottom="8dp" android:layout_marginTop="10dp">
+                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🩸" android:textSize="14sp" />
+                                <TextView android:id="@+id/myDonationCount" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="  — donations × 100 pts" android:textSize="12sp" android:textColor="#FFFFFF" android:fontFamily="@font/poppins_regular" />
+                                <TextView android:id="@+id/myTotalPointsLabel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="= — pts" android:textSize="12sp" android:textColor="#FFCCCC" android:fontFamily="@font/poppins_bold" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="All Donors" android:textSize="18sp" android:textColor="#1A1A1A" android:fontFamily="@font/poppins_bold" android:layout_marginBottom="12dp" />
+
+                    <androidx.recyclerview.widget.RecyclerView android:id="@+id/leaderboardRecyclerView" android:layout_width="match_parent" android:layout_height="wrap_content" android:nestedScrollingEnabled="false" app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </FrameLayout>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Root is a FrameLayout so we can layer the red swipe background behind the card -->
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp">
+
+    <!-- ── Red delete background shown during swipe ── -->
+    <LinearLayout
+        android:id="@+id/swipeBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFEBEE"
+        android:orientation="horizontal"
+        android:gravity="center_vertical|end"
+        android:paddingEnd="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🗑️"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="  Delete"
+            android:textSize="13sp"
+            android:textColor="#E53935"
+            android:fontFamily="@font/poppins_semibold" />
+
+    </LinearLayout>
+
+    <!-- ── Foreground card ── -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/alertCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="#FFFFFF">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="14dp"
+            android:gravity="center_vertical">
+
+            <!-- Unread red dot -->
+            <View
+                android:id="@+id/unreadDot"
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:background="@drawable/circle_red_solid"
+                android:layout_marginEnd="10dp"
+                android:visibility="gone" />
+
+            <!-- Bell icon -->
+            <TextView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:text="🔔"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:background="@drawable/badge_pink_light"
+                android:layout_marginEnd="12dp" />
+
+            <!-- Text content -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/alertTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Alert"
+                    android:textSize="13sp"
+                    android:textColor="#1A1A1A"
+                    android:fontFamily="@font/poppins_semibold" />
+
+                <TextView
+                    android:id="@+id/alertMessage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="12sp"
+                    android:textColor="#666666"
+                    android:fontFamily="@font/poppins_regular"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:layout_marginTop="2dp" />
+
+            </LinearLayout>
+
+            <!-- Time -->
+            <TextView
+                android:id="@+id/alertTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="10sp"
+                android:textColor="#AAAAAA"
+                android:fontFamily="@font/poppins_regular"
+                android:layout_marginStart="8dp" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</FrameLayout>

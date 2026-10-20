@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>OneDrop Admin Panel</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/admin_shared.css">
+</head>
+<body>
+<div class="sidebar">
+    <div class="sidebar-logo">
+        <div class="logo-text"><span>One</span><span class="drop-letter"></span><span>Drop</span></div>
+    </div>
+    <a href="admin_panel.html"        class="nav-item"><i class="fas fa-th-large"></i>    <span>Overview</span></a>
+    <a href="user_management.html"    class="nav-item"><i class="fas fa-users"></i>       <span>User Management</span></a>
+    <a href="top_donaters.html"       class="nav-item"><i class="fas fa-trophy"></i>      <span>Top Donaters</span></a>
+    <a href="qr_manage.html"          class="nav-item"><i class="fas fa-qrcode"></i>      <span>QR Code Management</span></a>
+    <a href="qr_history.html"         class="nav-item"><i class="fas fa-history"></i>     <span>QR Scan History</span></a>
+    <a href="hospitals.html"          class="nav-item"><i class="fas fa-hospital"></i>    <span>Donation Centers</span></a>
+    <a href="monetary_donations.html" class="nav-item"><i class="fas fa-dollar-sign"></i> <span>Monetary Donations</span></a>
+    <a href="alerts.html"             class="nav-item"><i class="fas fa-bell"></i>        <span>Send Alerts</span></a>
+    <a href="LogoutServlet" class="nav-item" onclick="return confirmLogout(event)">
+        <i class="fas fa-sign-out-alt"></i><span>Logout</span>
+    </a>
+</div>
+<div class="main-content">
+    <div class="top-bar">
+        <h2>Dashboard Overview</h2>
+        <div class="admin-info">
+            <div>
+                <div class="admin-name" style="font-weight:600;color:#333;font-size:15px;">Loading...</div>
+                <div class="admin-email" style="font-size:13px;color:#999;">Loading...</div>
+            </div>
+            <div class="admin-avatar">?</div>
+        </div>
+    </div>
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-icon red"><i class="fas fa-users"></i></div>
+            <div class="stat-info"><h3 id="statUsers">0</h3><p>Total Users</p></div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon blue"><i class="fas fa-hand-holding-heart"></i></div>
+            <div class="stat-info"><h3 id="statDonations">0</h3><p>Total Donations</p></div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon green"><i class="fas fa-qrcode"></i></div>
+            <div class="stat-info"><h3 id="statQR">0</h3><p>QR Codes Generated</p></div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon orange"><i class="fas fa-hospital"></i></div>
+            <div class="stat-info"><h3 id="statCenters">0</h3><p>Donation Centers</p></div>
+        </div>
+    </div>
+</div>
+<script src="assets/js/admin_shared.js"></script>
+<script src="assets/js/admin_panel.js"></script>
+</body>
+</html>

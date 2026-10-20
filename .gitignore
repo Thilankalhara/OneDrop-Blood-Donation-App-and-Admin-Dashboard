@@ -1,0 +1,49 @@
+# ==========================================
+# 🛑 OneDrop Project .gitignore
+# ==========================================
+
+# ── 1. Documents & External Documentation ──
+*.pdf
+Android_Study_Guide.pdf
+OneDrop_Documentation.pdf
+linkedin_post.txt
+
+# ── 2. Database Files & SQL Dumps ─────────
+*.sql
+one drop database.txt
+oneDropV3(with sample data).sql
+one_drop,v2.sql
+
+# ── 3. Signing Keys & Keystores ────────────
+Android key/
+*.keystore
+*.jks
+*.p12
+*.pem
+*.key
+
+# ── 4. Private Credentials & Secrets ───────
+google-services.json
+local.properties
+.env
+*.env
+*.properties.private
+
+# ── 5. Build Outputs & Logs ────────────────
+.gradle/
+**/build/
+**/dist/
+**/out/
+**/bin/
+**/target/
+*.apk
+*.aab
+hs_err_pid*.log
+
+# ── 6. IDE & System Files ──────────────────
+.idea/
+*.iml
+nbproject/private/
+.vscode/
+.DS_Store
+Thumbs.db

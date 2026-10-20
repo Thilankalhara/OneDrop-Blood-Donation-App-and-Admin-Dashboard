@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    app:cardCornerRadius="14dp"
+    app:cardElevation="0dp"
+    app:cardBackgroundColor="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="14dp">
+
+        <!-- Rank number -->
+        <TextView
+            android:id="@+id/donorRank"
+            android:layout_width="24dp"
+            android:layout_height="wrap_content"
+            android:text="4"
+            android:textSize="14sp"
+            android:textColor="#AAAAAA"
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="center"
+            android:layout_marginEnd="12dp" />
+
+        <!-- Avatar circle -->
+        <TextView
+            android:id="@+id/donorAvatar"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:text="LN"
+            android:textSize="14sp"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="center"
+            android:background="@drawable/avatar_purple"
+            android:layout_marginEnd="12dp" />
+
+        <!-- Name + donations -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/donorName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lena N."
+                android:textSize="14sp"
+                android:textColor="#1A1A1A"
+                android:fontFamily="@font/poppins_semibold" />
+
+            <!-- Donation count sub-label -->
+            <TextView
+                android:id="@+id/donorLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="14 donations"
+                android:textSize="11sp"
+                android:textColor="#AAAAAA"
+                android:fontFamily="@font/poppins_regular" />
+
+        </LinearLayout>
+
+        <!-- Points column -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="end">
+
+            <!-- Points big number -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/donorScore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1,400"
+                    android:textSize="15sp"
+                    android:textColor="#1A1A1A"
+                    android:fontFamily="@font/poppins_bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" pts"
+                    android:textSize="11sp"
+                    android:textColor="#E53935"
+                    android:fontFamily="@font/poppins_semibold" />
+
+            </LinearLayout>
+
+            <!-- Change indicator -->
+            <TextView
+                android:id="@+id/donorChange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="▲ +2"
+                android:textSize="11sp"
+                android:textColor="#4CAF50"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="end" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

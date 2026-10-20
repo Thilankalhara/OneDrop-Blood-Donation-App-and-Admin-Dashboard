@@ -1,0 +1,551 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- ── Main content ── -->
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FFF5F5"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:paddingBottom="90dp">
+
+                <!-- ── Greeting Header ── -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="8dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/greetingText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="GOOD MORNING"
+                            android:textSize="11sp"
+                            android:letterSpacing="0.12"
+                            android:textColor="#AAAAAA"
+                            android:fontFamily="@font/poppins_semibold" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:id="@+id/userNameText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Welcome Back"
+                                android:textSize="22sp"
+                                android:textColor="#1A1A1A"
+                                android:fontFamily="@font/poppins_bold" />
+
+                            <TextView
+                                android:id="@+id/greetingEmoji"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" 👋"
+                                android:textSize="20sp"
+                                android:layout_marginStart="4dp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!-- Notification Bell -->
+                    <FrameLayout
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="8dp">
+
+                        <ImageView
+                            android:id="@+id/notificationBtn"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/ic_notification"
+                            android:background="@drawable/circle_white_bg"
+                            android:padding="10dp"
+                            app:tint="#555555"
+                            android:contentDescription="Notifications" />
+
+                        <TextView
+                            android:id="@+id/notificationBadge"
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="top|end"
+                            android:background="@drawable/circle_red_solid"
+                            android:textColor="#FFFFFF"
+                            android:textSize="9sp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:gravity="center"
+                            android:visibility="gone" />
+
+                    </FrameLayout>
+
+                    <!-- Avatar -->
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/userAvatar"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_profile"
+                        app:civ_border_width="2dp"
+                        app:civ_border_color="#E53935" />
+
+                </LinearLayout>
+
+                <!-- ── Hero Donation Card ── -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="#E53935">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:minHeight="180dp">
+
+                        <View
+                            android:layout_width="140dp"
+                            android:layout_height="140dp"
+                            android:background="@drawable/circle_red_light"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginEnd="-40dp"
+                            android:layout_marginTop="-40dp" />
+
+                        <View
+                            android:layout_width="90dp"
+                            android:layout_height="90dp"
+                            android:background="@drawable/circle_red_light"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="-30dp" />
+
+                        <TextView
+                            android:id="@+id/totalDonationsLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TOTAL DONATIONS"
+                            android:textSize="11sp"
+                            android:letterSpacing="0.12"
+                            android:textColor="#FFCCCC"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:layout_alignParentTop="true" />
+
+                        <TextView
+                            android:id="@+id/donationCountText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textSize="64sp"
+                            android:textColor="#FFFFFF"
+                            android:fontFamily="@font/poppins_bold"
+                            android:layout_below="@id/totalDonationsLabel" />
+
+                        <TextView
+                            android:id="@+id/livesText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="You've helped save up to 0 lives"
+                            android:textSize="13sp"
+                            android:textColor="#FFCCCC"
+                            android:fontFamily="@font/poppins_regular"
+                            android:layout_below="@id/donationCountText"
+                            android:layout_marginTop="-4dp" />
+
+                        <LinearLayout
+                            android:id="@+id/badgesRow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_below="@id/livesText"
+                            android:layout_marginTop="12dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="🩸 Donor"
+                                android:textSize="11sp"
+                                android:textColor="#FFFFFF"
+                                android:background="@drawable/badge_red_dark"
+                                android:paddingStart="10dp"
+                                android:paddingEnd="10dp"
+                                android:paddingTop="4dp"
+                                android:paddingBottom="4dp"
+                                android:layout_marginEnd="8dp" />
+
+                            <TextView
+                                android:id="@+id/streakBadge"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="⚡ Active"
+                                android:textSize="11sp"
+                                android:textColor="#FFFFFF"
+                                android:background="@drawable/badge_red_dark"
+                                android:paddingStart="10dp"
+                                android:paddingEnd="10dp"
+                                android:paddingTop="4dp"
+                                android:paddingBottom="4dp"
+                                android:layout_marginEnd="8dp" />
+
+                            <TextView
+                                android:id="@+id/bloodTypeBadge"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="🏆 Top"
+                                android:textSize="11sp"
+                                android:textColor="#FFFFFF"
+                                android:background="@drawable/badge_red_dark"
+                                android:paddingStart="10dp"
+                                android:paddingEnd="10dp"
+                                android:paddingTop="4dp"
+                                android:paddingBottom="4dp" />
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- ── Blood Type + Active Info Boxes ── -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="16dp">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="90dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="8dp"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="0dp"
+                        app:cardBackgroundColor="#FFFFFF">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:padding="12dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="🩸"
+                                android:textSize="22sp" />
+
+                            <TextView
+                                android:id="@+id/bloodTypeValue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="?"
+                                android:textSize="18sp"
+                                android:textColor="#1A1A1A"
+                                android:fontFamily="@font/poppins_bold"
+                                android:layout_marginTop="2dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="BLOOD TYPE"
+                                android:textSize="9sp"
+                                android:letterSpacing="0.1"
+                                android:textColor="#AAAAAA"
+                                android:fontFamily="@font/poppins_semibold" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="90dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="8dp"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="0dp"
+                        app:cardBackgroundColor="#FFFFFF">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:padding="12dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="⚡"
+                                android:textSize="22sp" />
+
+                            <TextView
+                                android:id="@+id/activeValue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="New"
+                                android:textSize="18sp"
+                                android:textColor="#1A1A1A"
+                                android:fontFamily="@font/poppins_bold"
+                                android:layout_marginTop="2dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="ACTIVE"
+                                android:textSize="9sp"
+                                android:letterSpacing="0.1"
+                                android:textColor="#AAAAAA"
+                                android:fontFamily="@font/poppins_semibold" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+                <!-- ── Daily Inspiration ── -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="#FFFFFF">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="DAILY INSPIRATION"
+                            android:textSize="10sp"
+                            android:letterSpacing="0.12"
+                            android:textColor="#E53935"
+                            android:background="@drawable/badge_pink_light"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:paddingTop="3dp"
+                            android:paddingBottom="3dp"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:layout_marginBottom="12dp" />
+
+                        <androidx.viewpager2.widget.ViewPager2
+                            android:id="@+id/quoteViewPager"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp" />
+
+                        <LinearLayout
+                            android:id="@+id/quoteDots"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="10dp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- ── Messages Section ── -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="12dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Messages"
+                        android:textSize="16sp"
+                        android:textColor="#1A1A1A"
+                        android:fontFamily="@font/poppins_semibold" />
+
+                    <TextView
+                        android:id="@+id/seeAllMessages"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="See all"
+                        android:textSize="12sp"
+                        android:textColor="#E53935"
+                        android:fontFamily="@font/poppins_semibold" />
+
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/messagesRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                <TextView
+                    android:id="@+id/noMessagesText"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:text="No messages yet"
+                    android:textSize="13sp"
+                    android:textColor="#CCCCCC"
+                    android:gravity="center"
+                    android:fontFamily="@font/poppins_regular"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- ── No Internet / Server Error Overlay ─────────────────────────── -->
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <LinearLayout
+        android:id="@+id/noInternetOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="32dp"
+        android:background="#CCF5F5F5"
+        android:visibility="gone"
+        android:elevation="8dp">
+
+        <!-- Icon: updated in code — 📡 no-internet, ⚠️ server error -->
+        <TextView
+            android:id="@+id/noInternetIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="📡"
+            android:textSize="64sp"
+            android:gravity="center"
+            android:layout_marginBottom="16dp" />
+
+        <!-- ✅ Added android:id so code can update text dynamically -->
+        <TextView
+            android:id="@+id/noInternetTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No Internet Connection"
+            android:textSize="20sp"
+            android:textColor="#1A1A1A"
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="center"
+            android:layout_marginBottom="8dp" />
+
+        <!-- ✅ Added android:id so code can update text dynamically -->
+        <TextView
+            android:id="@+id/noInternetSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Please check your connection&#10;and try again"
+            android:textSize="13sp"
+            android:textColor="#888888"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:layout_marginBottom="32dp" />
+
+        <TextView
+            android:id="@+id/retryButton"
+            android:layout_width="180dp"
+            android:layout_height="48dp"
+            android:text="Try Again"
+            android:textSize="14sp"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/poppins_semibold"
+            android:gravity="center"
+            android:background="@drawable/rounded_button2"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- ── Blood Drop Shake Overlay ───────────────────────────────────── -->
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <FrameLayout
+        android:id="@+id/shakeOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#88DC143C"
+        android:visibility="gone"
+        android:elevation="16dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/shakeBloodDrop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="🩸"
+            android:textSize="120sp"
+            android:gravity="center" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingTop="160dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Thank you, Hero! 🦸"
+                android:textSize="22sp"
+                android:textColor="#FFFFFF"
+                android:fontFamily="@font/poppins_bold"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Every drop counts 🩸"
+                android:textSize="14sp"
+                android:textColor="#FFCCCC"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:layout_marginTop="4dp" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</FrameLayout>

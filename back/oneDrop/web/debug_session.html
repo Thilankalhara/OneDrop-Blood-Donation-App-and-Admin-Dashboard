@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session Debug</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #DC143C;
+            border-bottom: 2px solid #DC143C;
+            padding-bottom: 10px;
+        }
+        .status {
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .success {
+            background: #E8F5E9;
+            color: #2E7D32;
+            border-left: 5px solid #4CAF50;
+        }
+        .error {
+            background: #FFEBEE;
+            color: #C62828;
+            border-left: 5px solid #F44336;
+        }
+        .info {
+            background: #E3F2FD;
+            color: #1565C0;
+            border-left: 5px solid #2196F3;
+        }
+        button {
+            background: #DC143C;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 14px;
+        }
+        button:hover {
+            background: #B8152E;
+        }
+        pre {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .attribute {
+            padding: 10px;
+            margin: 5px 0;
+            background: #f9f9f9;
+            border-left: 3px solid #DC143C;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🔍 Session Debug Tool</h2>
+        
+        <button onclick="checkSession()">Check Session</button>
+        <button onclick="testAlertServlet()">Test Alert Servlet</button>
+        <button onclick="location.reload()">Refresh Page</button>
+        <button onclick="location.href='admin_login.html'">Go to Login</button>
+        <button onclick="location.href='alerts.html'">Go to Alerts</button>
+        
+        <div id="results"></div>
+    </div>
+
+    <script>
+        function showResult(html) {
+            document.getElementById('results').innerHTML = html;
+        }
+
+        function checkSession() {
+            showResult('<div class="info">⏳ Checking session via servlet...</div>');
+            
+            fetch('SessionTestServlet')
+                .then(response => response.text())
+                .then(html => {
+                    showResult(html);
+                })
+                .catch(error => {
+                    showResult('<div class="error">❌ Error: ' + error + '</div>');
+                });
+        }
+
+        function testAlertServlet() {
+            showResult('<div class="info">⏳ Testing AlertsServlet POST...</div>');
+            
+            const formData = new URLSearchParams();
+            formData.append('title', 'Test Alert');
+            formData.append('message', 'This is a test message');
+            formData.append('type', 'all');
+            formData.append('email', '');
+            formData.append('blood', '');
+
+            fetch('AlertsServlet', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                console.log('Response:', data);
+                if (data.trim() === 'success') {
+                    showResult('<div class="success">✅ SUCCESS! Alert sent successfully!</div>');
+                } else {
+                    showResult(`
+                        <div class="error">
+                            <strong>❌ FAILED</strong><br>
+                            Server Response: <pre>${data}</pre>
+                        </div>
+                    `);
+                }
+            })
+            .catch(error => {
+                showResult('<div class="error">❌ Network Error: ' + error + '</div>');
+            });
+        }
+
+        // Auto-check session on load
+        window.onload = function() {
+            checkSession();
+        };
+    </script>
+</body>
+</html>

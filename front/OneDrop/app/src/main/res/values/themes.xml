@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="Base.Theme.OneDrop" parent="Theme.Material3.DayNight.NoActionBar" />
+
+    <style name="Theme.OneDrop" parent="Base.Theme.OneDrop">
+        <item name="bottomNavigationStyle">@style/FullPillBottomNav</item>
+    </style>
+
+    <!-- Splash Screen Theme -->
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@android:color/white</item>
+    </style>
+
+    <style name="Theme.OneDrop.FullScreen" parent="Theme.OneDrop">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:navigationBarColor">@color/white</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+    </style>
+
+    <!-- Bottom nav pill styles — all defined here at top level -->
+    <style name="FullPillBottomNav" parent="Widget.Material3.BottomNavigationView">
+        <item name="itemActiveIndicatorStyle">@style/FullPillActiveIndicator</item>
+    </style>
+
+    <style name="FullPillActiveIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">#3D3450</item>
+        <item name="shapeAppearance">@style/FullPillShape</item>
+    </style>
+
+    <style name="FullPillShape" parent="ShapeAppearance.Material3.Corner.Full">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+</resources>

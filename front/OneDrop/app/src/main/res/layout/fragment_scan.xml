@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#111111">
+
+    <!-- Camera preview fills full screen -->
+    <androidx.camera.view.PreviewView
+        android:id="@+id/cameraPreview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Scrollable container — fixes swipe-up on "How it works" ── -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:overScrollMode="never">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- ── Top header (transparent, over camera) ── -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="24dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Verify Donation"
+                    android:textSize="20sp"
+                    android:textColor="#FFFFFF"
+                    android:fontFamily="@font/poppins_bold"
+                    android:gravity="center"
+                    android:layout_marginBottom="10dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Point your camera at the QR code provided&#10;by the donation center to verify your donation"
+                    android:textSize="12sp"
+                    android:textColor="#BBBBBB"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center"
+                    android:lineSpacingMultiplier="1.4" />
+
+            </LinearLayout>
+
+            <!-- ── Spacer so corner frame sits center-ish ── -->
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="60dp" />
+
+            <!-- ── Red corner bracket frame ── -->
+            <FrameLayout
+                android:id="@+id/scanFrame"
+                android:layout_width="230dp"
+                android:layout_height="230dp"
+                android:layout_gravity="center_horizontal">
+
+                <View android:layout_width="40dp" android:layout_height="40dp"
+                    android:layout_gravity="top|start"
+                    android:background="@drawable/corner_top_left" />
+                <View android:layout_width="40dp" android:layout_height="40dp"
+                    android:layout_gravity="top|end"
+                    android:background="@drawable/corner_top_right" />
+                <View android:layout_width="40dp" android:layout_height="40dp"
+                    android:layout_gravity="bottom|start"
+                    android:background="@drawable/corner_bottom_left" />
+                <View android:layout_width="40dp" android:layout_height="40dp"
+                    android:layout_gravity="bottom|end"
+                    android:background="@drawable/corner_bottom_right" />
+
+                <!-- Animated red scan line -->
+                <View
+                    android:id="@+id/scanLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="#E53935" />
+
+            </FrameLayout>
+
+            <!-- ── Spacer before bottom sheet ── -->
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+
+            <!-- ── White bottom sheet ── -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/bottom_sheet_rounded"
+                android:paddingTop="16dp"
+                android:paddingStart="24dp"
+                android:paddingEnd="24dp"
+                android:paddingBottom="100dp">
+
+                <!-- Drag handle -->
+                <View
+                    android:layout_width="36dp"
+                    android:layout_height="4dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/drag_handle"
+                    android:layout_marginBottom="18dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="How it works 👋"
+                    android:textSize="15sp"
+                    android:textColor="#1A1A1A"
+                    android:fontFamily="@font/poppins_bold"
+                    android:layout_marginBottom="14dp" />
+
+                <!-- Step 1 - done -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:gravity="center_vertical"
+                    android:layout_marginBottom="12dp">
+                    <TextView android:layout_width="28dp" android:layout_height="28dp"
+                        android:text="✓" android:textSize="12sp" android:textColor="#FFFFFF"
+                        android:fontFamily="@font/poppins_bold" android:gravity="center"
+                        android:background="@drawable/step_done" android:layout_marginEnd="14dp" />
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Visit donation center" android:textSize="13sp"
+                            android:textColor="#1A1A1A" android:fontFamily="@font/poppins_semibold" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Check in at the front desk" android:textSize="11sp"
+                            android:textColor="#999999" android:fontFamily="@font/poppins_regular" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Step 2 - active -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:gravity="center_vertical"
+                    android:layout_marginBottom="12dp">
+                    <TextView android:layout_width="28dp" android:layout_height="28dp"
+                        android:text="2" android:textSize="12sp" android:textColor="#FFFFFF"
+                        android:fontFamily="@font/poppins_bold" android:gravity="center"
+                        android:background="@drawable/step_active" android:layout_marginEnd="14dp" />
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Scan center's QR code" android:textSize="13sp"
+                            android:textColor="#1A1A1A" android:fontFamily="@font/poppins_semibold" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Displayed after your donation" android:textSize="11sp"
+                            android:textColor="#999999" android:fontFamily="@font/poppins_regular" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Step 3 - pending -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:gravity="center_vertical"
+                    android:layout_marginBottom="24dp">
+                    <TextView android:layout_width="28dp" android:layout_height="28dp"
+                        android:text="3" android:textSize="12sp" android:textColor="#AAAAAA"
+                        android:fontFamily="@font/poppins_bold" android:gravity="center"
+                        android:background="@drawable/step_inactive" android:layout_marginEnd="14dp" />
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Donation verified &amp; logged" android:textSize="13sp"
+                            android:textColor="#1A1A1A" android:fontFamily="@font/poppins_semibold" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Your count updates instantly" android:textSize="11sp"
+                            android:textColor="#999999" android:fontFamily="@font/poppins_regular" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Scan button -->
+                <LinearLayout
+                    android:id="@+id/scanButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="54dp"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:background="@drawable/btn_red_rounded">
+
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="📷" android:textSize="17sp" android:layout_marginEnd="8dp" />
+
+                    <TextView
+                        android:id="@+id/scanButtonText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Scan QR Code Now"
+                        android:textSize="14sp"
+                        android:textColor="#FFFFFF"
+                        android:fontFamily="@font/poppins_semibold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Result overlay shown after scan -->
+    <LinearLayout
+        android:id="@+id/resultOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="#CC000000"
+        android:visibility="gone"
+        android:padding="40dp">
+
+        <TextView
+            android:id="@+id/resultIcon"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:text="✓"
+            android:textSize="36sp"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="center"
+            android:background="@drawable/result_success_circle"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp" />
+
+        <TextView
+            android:id="@+id/resultTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Donation Verified!"
+            android:textSize="22sp"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/resultMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+100 points added to your account"
+            android:textSize="13sp"
+            android:textColor="#CCCCCC"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="32dp" />
+
+        <TextView
+            android:id="@+id/resultDoneButton"
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+            android:text="Done"
+            android:textSize="14sp"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/poppins_semibold"
+            android:gravity="center"
+            android:background="@drawable/btn_red_rounded"
+            android:layout_gravity="center_horizontal" />
+
+    </LinearLayout>
+
+</FrameLayout>

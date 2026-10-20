@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5">
+
+    <!-- ── Full screen OSMDroid Map ── -->
+    <org.osmdroid.views.MapView
+        android:id="@+id/osmMap"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- ── Back button overlay ── -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="16dp"
+        android:paddingTop="24dp">
+
+        <TextView
+            android:id="@+id/backBtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="←"
+            android:textSize="20sp"
+            android:textColor="#1A1A1A"
+            android:gravity="center"
+            android:background="@drawable/circle_white_bg"
+            android:elevation="6dp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Blood Donation Centers"
+            android:textSize="16sp"
+            android:textColor="#1A1A1A"
+            android:fontFamily="@font/poppins_bold"
+            android:layout_marginStart="12dp"
+            android:background="@drawable/avatar_white"
+            android:padding="8dp"
+            android:elevation="6dp" />
+
+    </LinearLayout>
+
+    <!-- ── Loading overlay ── -->
+    <LinearLayout
+        android:id="@+id/mapLoadingOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="#CCFFFFFF">
+        <ProgressBar
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:indeterminateTint="#DC143C" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Loading centers..."
+            android:textSize="13sp"
+            android:textColor="#888888"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_marginTop="12dp" />
+    </LinearLayout>
+
+    <!-- ── Hospital detail bottom sheet ── -->
+    <LinearLayout
+        android:id="@+id/hospitalBottomSheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical"
+        android:background="@drawable/bottom_sheet_rounded"
+        android:padding="20dp"
+        android:elevation="16dp"
+        android:visibility="gone">
+
+        <!-- Drag handle -->
+        <View
+            android:layout_width="40dp"
+            android:layout_height="4dp"
+            android:background="#DDDDDD"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Hospital info row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="16dp">
+
+            <!-- Icon -->
+            <TextView
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:text="🏥"
+                android:textSize="24sp"
+                android:gravity="center"
+                android:background="@drawable/badge_pink_light"
+                android:layout_marginEnd="14dp" />
+
+            <!-- Name + status -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/hospitalName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="—"
+                    android:textSize="16sp"
+                    android:textColor="#1A1A1A"
+                    android:fontFamily="@font/poppins_bold" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="4dp">
+
+                    <View
+                        android:id="@+id/hospitalStatusDot"
+                        android:layout_width="8dp"
+                        android:layout_height="8dp"
+                        android:background="@drawable/circle_red_solid"
+                        android:layout_marginEnd="6dp" />
+
+                    <TextView
+                        android:id="@+id/hospitalStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ACTIVE"
+                        android:textSize="11sp"
+                        android:textColor="#2E7D32"
+                        android:fontFamily="@font/poppins_semibold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Phone row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📞  "
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/hospitalPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="—"
+                android:textSize="13sp"
+                android:textColor="#555555"
+                android:fontFamily="@font/poppins_regular" />
+
+        </LinearLayout>
+
+        <!-- Action buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Call button -->
+            <LinearLayout
+                android:id="@+id/callBtn"
+                android:layout_width="0dp"
+                android:layout_height="52dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:background="@drawable/btn_outline_red">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="📞  "
+                    android:textSize="14sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CALL"
+                    android:textSize="14sp"
+                    android:textColor="#DC143C"
+                    android:fontFamily="@font/poppins_semibold" />
+            </LinearLayout>
+
+            <!-- Open Map button -->
+            <LinearLayout
+                android:id="@+id/openMapBtn"
+                android:layout_width="0dp"
+                android:layout_height="52dp"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:background="@drawable/btn_red_rounded">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🗺️  "
+                    android:textSize="14sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="OPEN MAP"
+                    android:textSize="14sp"
+                    android:textColor="#FFFFFF"
+                    android:fontFamily="@font/poppins_semibold" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

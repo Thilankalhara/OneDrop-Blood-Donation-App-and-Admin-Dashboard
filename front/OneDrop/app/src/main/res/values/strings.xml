@@ -1,0 +1,76 @@
+<resources>
+    <!-- App Name -->
+    <string name="app_name">OneDrop</string>
+
+    <!-- Splash Screen String -->
+    <string name="splash_screen">Welcome to OneDrop</string>
+
+    <!-- Sign-In Page Strings -->
+    <string name="sign_in_title">Sign Up</string> <!-- Updated -->
+    <string name="sign_in_button">Sign Up</string> <!-- Updated -->
+    <string name="sign_up_link_text">Don’t have an account? Sign in</string> <!-- Updated -->
+
+    <!-- Signup Page Strings -->
+    <string name="sign_up_title">Sign In</string> <!-- Updated -->
+    <string name="welcome_back_message">Hi Welcome back, You’ve been Missed</string>
+    <string name="email_label">Email</string>
+    <string name="email_hint">Enter your email</string>
+    <string name="password_label">Password</string>
+    <string name="password_hint">Enter your password</string>
+    <string name="remember_me">Remember me</string>
+    <string name="forget_password">Forget password?</string>
+    <string name="sign_up_button">Sign In</string> <!-- Updated -->
+    <string name="create_account_question">Don’t have an account?</string> <!-- Updated -->
+    <string name="sign_in_option">Sign Up</string> <!-- Updated -->
+
+    <!-- Find Account -->
+    <string name="find_account_title">Find your Account</string>
+    <string name="find_account_subtitle">Enter your email</string>
+    <string name="enter_registered_email_hint">Enter your Registered email</string>
+    <string name="continue_button_text">Continue</string>
+
+    <!-- OTP Verification -->
+    <string name="otp_verification_title">OTP code verification</string>
+    <string name="otp_verification_subtitle">Enter your OTP</string>
+    <string name="otp_code_hint">Enter your Code</string>
+    <string name="resend_otp_text">Send it again?</string>
+    <string name="verify_button_text">Verify</string>
+
+    <!-- Reset Password -->
+    <string name="reset_password_title">New Password</string>
+    <string name="reset_password_subtitle">Enter your New Password</string>
+    <string name="new_password_hint">Password requirement to have a minimum of 6 characters</string>
+    <string name="confirm_password_hint">Enter the same Password above you entered</string>
+    <string name="confirm_button_text">Confirm</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_leaderboard">Leaderboard</string>
+    <string name="nav_scan">Scan</string>
+    <string name="nav_donate">Donate</string>
+    <string name="nav_profile">Profile</string>
+
+    <!-- Home Screen -->
+    <string name="your_donations_count">Your donations count</string>
+    <string name="donations">donations</string>
+    <string name="points">%1$d points</string>
+    <string name="messages">Messages</string>
+    <string name="see_more">See more</string>
+    <string name="no_messages">No messages yet</string>
+    <string name="hours_ago">%1$d hours ago</string>
+    <string name="days_ago">%1$d days ago</string>
+
+    <!-- Blood Donation Quotes -->
+    <string-array name="blood_donation_quotes">
+        <item>Every drop counts. Your donation saves lives.</item>
+        <item>Be a hero. Donate blood today.</item>
+        <item>Give blood, give life. Make a difference.</item>
+        <item>Your blood can be someone\'s last hope.</item>
+        <item>Donate blood. Save a life. Be a lifesaver.</item>
+        <item>Blood donation is the gift of life.</item>
+        <item>Share your power. Give blood.</item>
+    </string-array>
+</resources>

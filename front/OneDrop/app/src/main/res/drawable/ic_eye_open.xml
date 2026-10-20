@@ -1,0 +1,14 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24"
+    android:tint="#666666">
+    <!-- Outer Eye -->
+    <path
+        android:pathData="M12 4.5C16.5 4.5 21 9 21 9S16.5 13.5 12 13.5C7.5 13.5 3 9 3 9S7.5 4.5 12 4.5Z" />
+
+    <!-- Circular Pupil -->
+    <path
+        android:pathData="M12 7C13.1046 7 14 7.89543 14 9C14 10.1046 13.1046 11 12 11C10.8954 11 10 10.1046 10 9C10 7.89543 10.8954 7 12 7Z" />
+</vector>

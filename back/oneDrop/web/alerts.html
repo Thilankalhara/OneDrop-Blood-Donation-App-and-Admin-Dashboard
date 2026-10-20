@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>OneDrop Admin Panel - Send Alerts</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/admin_shared.css">
+</head>
+<body>
+
+<div class="sidebar">
+    <div class="sidebar-logo">
+        <div class="logo-text"><span>One</span><span class="drop-letter"></span><span>Drop</span></div>
+    </div>
+    <a href="admin_panel.html"        class="nav-item"><i class="fas fa-th-large"></i>    <span>Overview</span></a>
+    <a href="user_management.html"    class="nav-item"><i class="fas fa-users"></i>       <span>User Management</span></a>
+    <a href="top_donaters.html"       class="nav-item"><i class="fas fa-trophy"></i>      <span>Top Donaters</span></a>
+    <a href="qr_manage.html"          class="nav-item"><i class="fas fa-qrcode"></i>      <span>QR Code Management</span></a>
+    <a href="qr_history.html"         class="nav-item"><i class="fas fa-history"></i>     <span>QR Scan History</span></a>
+    <a href="hospitals.html"          class="nav-item"><i class="fas fa-hospital"></i>    <span>Donation Centers</span></a>
+    <a href="monetary_donations.html" class="nav-item"><i class="fas fa-dollar-sign"></i> <span>Monetary Donations</span></a>
+    <a href="alerts.html"             class="nav-item"><i class="fas fa-bell"></i>        <span>Send Alerts</span></a>
+    <a href="LogoutServlet" class="nav-item" onclick="return confirmLogout(event)">
+        <i class="fas fa-sign-out-alt"></i><span>Logout</span>
+    </a>
+</div>
+
+<div class="main-content">
+    <div class="top-bar">
+        <h2><i class="fas fa-bell me-2" style="color:var(--primary-red);"></i>Send Alerts</h2>
+        <div class="admin-info">
+            <div>
+                <div class="admin-name" style="font-weight:600;color:#333;font-size:15px;">Loading...</div>
+                <div class="admin-email" style="font-size:13px;color:#999;">Loading...</div>
+            </div>
+            <div class="admin-avatar">?</div>
+        </div>
+    </div>
+
+    <div id="successAlert" class="alert-message alert-success"><i class="fas fa-check-circle"></i> <span id="successMessage"></span></div>
+    <div id="errorAlert"   class="alert-message alert-error">  <i class="fas fa-exclamation-circle"></i> <span id="errorMessage"></span></div>
+
+    <div class="content-card">
+        <h3><i class="fas fa-bell me-2" style="color:var(--primary-red);"></i>Send Alert</h3>
+        <label style="font-weight:600;color:#333;display:block;margin-bottom:8px;font-size:14px;">Alert Title</label>
+        <input type="text" id="alertTitle" class="form-control" placeholder="Enter alert title">
+        <label style="font-weight:600;color:#333;display:block;margin-bottom:8px;font-size:14px;">Alert Message</label>
+        <textarea id="alertMessage" class="form-control" placeholder="Enter your message here..." rows="4"></textarea>
+        <label style="font-weight:600;color:#333;display:block;margin-bottom:8px;font-size:14px;">Recipient Type</label>
+        <select id="recipientType" class="form-select" onchange="toggleInputs()">
+            <option value="all">All Users</option>
+            <option value="email">Specific Email</option>
+            <option value="bloodType">By Blood Type</option>
+        </select>
+        <div id="emailContainer" style="display:none;margin-bottom:15px;">
+            <label style="font-weight:600;color:#333;display:block;margin-bottom:8px;font-size:14px;">User Email</label>
+            <input type="email" id="userEmail" class="form-control" placeholder="Enter user email">
+        </div>
+        <div id="bloodTypeContainer" style="display:none;margin-bottom:15px;">
+            <label style="font-weight:600;color:#333;display:block;margin-bottom:8px;font-size:14px;">Blood Type</label>
+            <select id="bloodTypeSelect" class="form-select">
+                <option value="">Select Blood Type</option>
+                <option>A+</option><option>A-</option><option>B+</option><option>B-</option>
+                <option>O+</option><option>O-</option><option>AB+</option><option>AB-</option>
+            </select>
+        </div>
+        <button class="btn-action btn-send" onclick="sendAlert()"><i class="fas fa-paper-plane me-1"></i> Send Alert</button>
+    </div>
+
+    <div class="content-card">
+        <h3><i class="fas fa-history me-2" style="color:var(--primary-red);"></i>Alert History</h3>
+        <div class="toolbar">
+            <select id="filterAdmin" class="form-select" style="max-width:300px;" onchange="loadAlerts()">
+                <option value="">All Admins</option>
+            </select>
+            <button class="btn-action btn-send" onclick="loadAlerts()"><i class="fas fa-sync-alt"></i> Refresh</button>
+            <div style="flex:1;"></div>
+            <span id="selectionCount" class="selection-count" style="display:none;">0 selected</span>
+            <button class="btn-action btn-delete" onclick="bulkDeleteAlerts()" id="bulkDeleteBtn" style="display:none;"><i class="fas fa-trash"></i> Delete Selected</button>
+        </div>
+        <div class="table-container">
+            <table class="custom-table">
+                <thead>
+                    <tr>
+                        <th style="width:50px;"><input type="checkbox" id="selectAll" onchange="toggleSelectAll()"></th>
+                        <th>ID</th><th>Admin Name</th><th>Recipient</th><th>Title</th><th>Message</th><th>Date</th><th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="alertsTableBody">
+                    <tr><td colspan="8" style="text-align:center;padding:40px;">
+                        <i class="fas fa-spinner fa-spin" style="font-size:32px;color:var(--primary-red);"></i>
+                        <p style="margin-top:10px;color:#999;">Loading alerts...</p>
+                    </td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="assets/js/admin_shared.js"></script>
+<script src="assets/js/alerts.js"></script>
+</body>
+</html>
